@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebraic Equation Solver</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-calculator equation-icon"></i>
+                <h1>Equation Solver</h1>
+                <p>Store and evaluate algebraic equations using postfix trees</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <div class="input-container">
+                    <div class="input-group">
+                        <i class="fas fa-function input-icon"></i>
+                        <input type="text" id="equationInput" placeholder="Enter algebraic equation (e.g., 3x + 2y - z)">
+                        <button id="storeBtn" class="store-btn">
+                            <i class="fas fa-save"></i>
+                            Store
+                        </button>
+                    </div>
+                    <div class="examples">
+                        <span>Examples:</span>
+                        <button class="example-btn" data-equation="3x + 2y - z">3x + 2y - z</button>
+                        <button class="example-btn" data-equation="x^2 + y^2 - 4">x^2 + y^2 - 4</button>
+                        <button class="example-btn" data-equation="2a * b + c / d">2a * b + c / d</button>
+                        <button class="example-btn" data-equation="x + y * z - w^2">x + y * z - w^2</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loadingSpinner" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Processing equation...</p>
+            </div>
+
+            <div id="message" class="message hidden"></div>
+
+            <div id="equationsSection" class="equations-section hidden">
+                <div class="section-header">
+                    <h2>Stored Equations</h2>
+                    <button id="refreshBtn" class="refresh-btn">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                </div>
+                <div id="equationsList" class="equations-list">
+                    <!-- Equations will be populated here -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Algebraic Equation Solver. Built with Spring Boot & Postfix Trees</p>
+        </footer>
+    </div>
+
+    <!-- Evaluation Modal -->
+    <div id="modalOverlay" class="modal-overlay hidden">
+        <div id="evaluationModal" class="modal">
+            <div class="modal-header">
+                <h3>Evaluate Equation</h3>
+                <button id="closeModalBtn" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="equation-display">
+                <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; font-family: 'Courier New', monospace; text-align: center; color: #333;">
+                    <span id="modalEquationText"></span>
+                </p>
+            </div>
+            
+            <div id="variableInputs" class="variable-inputs">
+                <!-- Variable inputs will be populated here -->
+            </div>
+            
+            <button id="evaluateModalBtn" class="evaluate-modal-btn">
+                <i class="fas fa-calculator"></i>
+                Calculate Result
+            </button>
+            
+            <div id="resultDisplay" class="result-display hidden">
+                <h4>Result:</h4>
+                <div id="resultValue" class="result-value">0</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
