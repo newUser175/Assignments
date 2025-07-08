@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Info - Pincode Search</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-cloud-sun weather-icon"></i>
+                <h1>Weather Info</h1>
+                <p>Get real-time weather information for any Indian pincode</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="search-section">
+                <div class="search-container">
+                    <div class="input-group">
+                        <i class="fas fa-map-marker-alt input-icon"></i>
+                        <input type="text" id="pincodeInput" placeholder="Enter 6-digit pincode (e.g., 400001)" maxlength="6">
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-search"></i>
+                            Search
+                        </button>
+                    </div>
+                    <div class="quick-search">
+                        <span>Quick search:</span>
+                        <button class="quick-btn" data-pincode="400001">Mumbai</button>
+                        <button class="quick-btn" data-pincode="110001">Delhi</button>
+                        <button class="quick-btn" data-pincode="560001">Bangalore</button>
+                        <button class="quick-btn" data-pincode="600001">Chennai</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loadingSpinner" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Fetching weather data...</p>
+            </div>
+
+            <div id="errorMessage" class="error-message hidden">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="errorText"></span>
+            </div>
+
+            <div id="weatherCard" class="weather-card hidden">
+                <div class="weather-header">
+                    <div class="location-info">
+                        <h2 id="cityName"></h2>
+                        <p id="stateInfo"></p>
+                        <span id="pincodeInfo"></span>
+                    </div>
+                    <div class="weather-icon-display">
+                        <i id="weatherIcon" class="fas fa-sun"></i>
+                    </div>
+                </div>
+
+                <div class="weather-main">
+                    <div class="temperature">
+                        <span id="tempValue">--</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <p id="weatherDescription"></p>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <i class="fas fa-tint"></i>
+                        <div class="detail-content">
+                            <span class="detail-label">Humidity</span>
+                            <span id="humidityValue" class="detail-value">--%</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-wind"></i>
+                        <div class="detail-content">
+                            <span class="detail-label">Wind Speed</span>
+                            <span id="windSpeedValue" class="detail-value">-- km/h</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="detail-content">
+                            <span class="detail-label">Last Updated</span>
+                            <span id="timestampValue" class="detail-value">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="historyBtn" class="history-btn">
+                    <i class="fas fa-history"></i>
+                    View History
+                </button>
+            </div>
+
+            <div id="historySection" class="history-section hidden">
+                <div class="history-header">
+                    <h3>Weather History</h3>
+                    <button id="closeHistoryBtn" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="historyContent" class="history-content">
+                    <!-- History items will be populated here -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Weather Info Service. Built with Spring Boot & HTML/CSS</p>
+        </footer>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
